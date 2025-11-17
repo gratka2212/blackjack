@@ -7,15 +7,16 @@ def createDeck():
 
 
     for item in colors:
-
         for i in range(1, 15):
-
             if i <= 10:
                 c = str(i)
+                
             else:
                 c = figures[i]
+                
             card = c + " of " + item
             deck.append(card)
+            
     return deck
 
 def getIndex(card, deck):
@@ -59,5 +60,6 @@ while(q == "t"):
     print(card)
     #print(deck)
     getValue(card)
+
 
     q = input("Dalej? ")
