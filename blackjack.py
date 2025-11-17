@@ -33,23 +33,22 @@ def drawCard(deck):
     return randomCard, deck
 
 def getValue(card):
-    numStr = ""
+    valueStr = ""
     i = 0
     while(card[i] != " "):
-        numStr = numStr + card[i]
+        valueStr = valueStr + card[i]
         i += 1
     
     try:
-        num = int(numStr)
+        value = int(valueStr)
     except:
-        if numStr != "ace":
-            num = 10
+        if valueStr != "ace":
+            value = 10
         else:
-            num = 11
-
-    print(num)
-
-    return num
+            value = 11
+            
+    #print(value)
+    return value
 
 
 deck = createDeck()
