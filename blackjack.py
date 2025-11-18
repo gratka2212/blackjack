@@ -23,6 +23,7 @@ def getIndex(card, deck):
     for i, item in enumerate(deck):
         if item == card:
             return i
+    return None
 
 def drawCard(deck):
     r = randint(0, len(deck)-1)
@@ -181,3 +182,4 @@ while(nextGame.capitalize() == "Y"):
         deck = createDeck()
         nextGame = input("Do you want to play a new game? (Y/N)\n")
         print("####################\n###   RESTART    ###\n####################")
+
