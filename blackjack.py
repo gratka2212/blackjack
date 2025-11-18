@@ -91,7 +91,12 @@ tokens = int(input("How many tokens do you have?\n"))
 while(nextGame.capitalize() == "Y"):
 
     print(f"You have {tokens} tokens")
-    bet = int(input("Place your bet.\n"))
+    bet = input("Place your bet.\n")
+    try:
+        bet = int(bet)
+    except:
+        print("Bet should be a number")
+        continue
     if bet > tokens:
         print("Not enough tokens.")
         continue
@@ -125,7 +130,7 @@ while(nextGame.capitalize() == "Y"):
             print(item)
         print(playerPoints)
         tokens += (0.5*bet)
-        exit()
+        continue
 
 
     ################## GAME ##################
@@ -180,6 +185,8 @@ while(nextGame.capitalize() == "Y"):
         if playerPoints > 21:
             print("\n####################\n###   YOU LOSE   ###\n####################")
             tokens -= bet
+            if tokens == 0:
+                exit()
             break
         
         decision = input("Hit or Stand?\n")
