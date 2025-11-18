@@ -27,10 +27,6 @@ def getIndex(card, deck):
 
 def drawCard(deck):
     r = randint(0, len(deck)-1)
-    #print(f"\n\n{r}")
-    #print(deck)
-    #print(deck[r])
-    #print("\n\n")
     randomCard = deck[r]
 
     cardIndex = getIndex(randomCard, deck)
@@ -90,7 +86,15 @@ def hit(deck, cards, points):
 deck = createDeck()
 nextGame = "Y"
 
+tokens = int(input("How many tokens do you have?\n"))
+
 while(nextGame.capitalize() == "Y"):
+
+    print(f"You have {tokens} tokens")
+    bet = int(input("Place your bet.\n"))
+    if bet > tokens:
+        print("Not enough tokens.")
+        continue
 
     playerCards = []
     dealerCards = []
@@ -120,6 +124,7 @@ while(nextGame.capitalize() == "Y"):
         for item in playerCards:
             print(item)
         print(playerPoints)
+        tokens += (0.5*bet)
         exit()
 
 
@@ -151,12 +156,14 @@ while(nextGame.capitalize() == "Y"):
 
             if dealerPoints > 21 or dealerPoints < playerPoints:
                 print("\n####################\n###   YOU WIN    ###\n####################")
+                tokens += bet
 
             elif dealerPoints == playerPoints:
                 print("\n####################\n###  IT'S A TIE  ###\n####################")
 
             else:
                 print("\n####################\n###   YOU LOSE   ###\n####################")
+                tokens -= bet
 
             break
 
@@ -172,6 +179,7 @@ while(nextGame.capitalize() == "Y"):
 
         if playerPoints > 21:
             print("\n####################\n###   YOU LOSE   ###\n####################")
+            tokens -= bet
             break
         
         decision = input("Hit or Stand?\n")
@@ -182,4 +190,3 @@ while(nextGame.capitalize() == "Y"):
         deck = createDeck()
         nextGame = input("Do you want to play a new game? (Y/N)\n")
         print("####################\n###   RESTART    ###\n####################")
-
